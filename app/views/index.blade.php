@@ -10,12 +10,9 @@
             @foreach($cat_feeds as $cat_feed)
                 <h3>{{ $cat_feed->title }}</h3>
                 <ul>
-                   <?php $feeds = Str::parse_feed($cat_feed->feed); ?>
-                   @if(count($feeds))
-                       @foreach($feeds as $eachfeed)
-                           @include('partials.feed')
-                       @endforeach  
-                   @endif   
+                @foreach($cat_feed->getParsedFeed() as $eachfeed)
+                    @include('partials.feed')
+                @endforeach    
                </ul>
             @endforeach
         @endforeach   
