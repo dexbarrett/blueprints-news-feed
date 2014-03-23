@@ -1,0 +1,21 @@
+body {
+    font-family: Tahoma, Arial, sans-serif;
+}
+
+h1, h2, h3, strong { color: #666; }
+
+blockquote {
+    background: #bbb;
+    border-radius: 3px;
+}
+
+li {
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    list-style-type: none;
+    margin-bottom: 10px;
+}
+
+a {
+    color: #1B9BE0;
+}

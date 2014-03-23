@@ -9,7 +9,25 @@ class FeedController extends \BaseController {
 	 */
 	public function index()
 	{
-		//
+		$news_raw = Feed::whereActive(1)
+			->whereCategory('News')
+			->get();
+
+		$sports_raw = Feed::whereActive(1)
+			->whereCategory('Sports')
+			->get();
+			
+		$tech_raw = Feed::whereActive(1)
+			->whereCategory('Technology')
+			->get();
+
+		return View::make('index')
+			->with('categories', array(
+								'news' => $news_raw,
+								'sports' => $sports_raw,
+								'technology' => $tech_raw
+								)
+			);
 	}
 
 	/**
@@ -47,50 +65,6 @@ class FeedController extends \BaseController {
 		return Redirect::route('feed.create')
 			->withInput()
 			->with('message', 'The feed could not be added. Please try again later.');
-	}
-
-	/**
-	 * Display the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function show($id)
-	{
-		//
-	}
-
-	/**
-	 * Show the form for editing the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function edit($id)
-	{
-		//
-	}
-
-	/**
-	 * Update the specified resource in storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function update($id)
-	{
-		//
-	}
-
-	/**
-	 * Remove the specified resource from storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function destroy($id)
-	{
-		//
 	}
 
 }
